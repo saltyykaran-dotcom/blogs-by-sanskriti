@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Blogs by Sanskriti</title>
+
+<style>
+
+/* =====================================
+   GLOBAL
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    line-height: 1.8;
+
+    background:
+        radial-gradient(circle at 10% 10%, rgba(255, 105, 180, 0.20), transparent 25%),
+        radial-gradient(circle at 90% 10%, rgba(0, 210, 255, 0.18), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(140, 70, 255, 0.18), transparent 30%),
+        linear-gradient(135deg, #fff7fc, #f1fbff, #f8f3ff);
+
+    min-height: 100vh;
+}
+
+
+/* =====================================
+   NAVBAR
+===================================== */
+
+nav {
+    background: linear-gradient(
+        90deg,
+        #4b1d75,
+        #7b2cbf,
+        #c026d3,
+        #db2777
+    );
+
+    padding: 18px 8%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: 0 5px 25px rgba(70, 20, 100, 0.25);
+}
+
+.logo {
+    color: white;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+
+/* =====================================
+   HERO
+===================================== */
+
+.hero {
+    text-align: center;
+    color: white;
+
+    padding: 110px 8%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4b1d75,
+            #7b2cbf,
+            #c026d3,
+            #db2777
+        );
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    width: 280px;
+    height: 280px;
+
+    position: absolute;
+    left: -80px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.12);
+}
+
+.hero::after {
+    content: "";
+
+    width: 350px;
+    height: 350px;
+
+    position: absolute;
+    right: -120px;
+    bottom: -180px;
+
+    border-radius: 50%;
+
+    background: rgba(0,255,220,0.12);
+}
+
+.hero h1 {
+    font-size: 54px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero p {
+    max-width: 760px;
+    margin: auto;
+
+    font-size: 19px;
+    color: #f8eaff;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+.search-container {
+    text-align: center;
+    padding: 35px 10px 10px;
+}
+
+#searchBox {
+    width: 90%;
+    max-width: 600px;
+
+    padding: 16px 22px;
+
+    border: 2px solid #e3c5f4;
+    border-radius: 40px;
+
+    font-size: 16px;
+    outline: none;
+
+    background: white;
+
+    box-shadow: 0 8px 25px rgba(100,30,150,0.12);
+
+    transition: 0.3s;
+}
+
+#searchBox:focus {
+    border-color: #c026d3;
+
+    box-shadow:
+        0 0 0 4px rgba(192,38,211,0.12),
+        0 10px 30px rgba(123,44,191,0.15);
+}
+
+
+/* =====================================
+   MAIN CONTAINER
+===================================== */
+
+.container {
+    width: 84%;
+    max-width: 1200px;
+    margin: 55px auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+
+    background: linear-gradient(
+        90deg,
+        #7b2cbf,
+        #c026d3,
+        #db2777
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-title p {
+    color: #777;
+}
+
+
+/* =====================================
+   BLOG GRID
+===================================== */
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+}
+
+
+/* =====================================
+   BLOG CARD
+===================================== */
+
+.blog-card {
+    background: rgba(255,255,255,0.95);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(70,30,110,0.10);
+
+    transition: 0.35s;
+
+    border: 1px solid rgba(255,255,255,0.9);
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 20px 45px rgba(110,40,180,0.20);
+}
+
+.blog-card::before {
+    content: "";
+
+    display: block;
+    height: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7b2cbf,
+            #c026d3,
+            #db2777,
+            #06b6d4
+        );
+}
+
+.blog-card img {
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 24px;
+}
+
+.category {
+    display: inline-block;
+
+    padding: 5px 12px;
+
+    border-radius: 20px;
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7b2cbf,
+            #db2777
+        );
+}
+
+.blog-card h3 {
+    color: #351052;
+    font-size: 22px;
+    margin: 12px 0 8px;
+}
+
+.blog-card p {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+
+/* =====================================
+   BUTTON
+===================================== */
+
+.read-btn {
+    display: inline-block;
+
+    padding: 10px 20px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7b2cbf,
+            #db2777
+        );
+
+    border-radius: 25px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.read-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(219,39,119,0.25);
+}
+
+
+/* =====================================
+   ARTICLE
+===================================== */
+
+.article {
+    display: none;
+
+    width: 84%;
+    max-width: 950px;
+
+    margin: 50px auto;
+
+    padding: 50px;
+
+    background: rgba(255,255,255,0.97);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 45px rgba(80,30,120,0.12);
+
+    border-top: 6px solid #c026d3;
+}
+
+.article.active {
+    display: block;
+}
+
+.article h1 {
+    color: #4b1d75;
+    font-size: 43px;
+    margin-bottom: 8px;
+}
+
+.article-info {
+    color: #a855f7;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.article p {
+    color: #444;
+    font-size: 17px;
+    margin: 18px 0;
+}
+
+.article h2 {
+    color: #7b2cbf;
+    margin-top: 35px;
+    margin-bottom: 10px;
+}
+
+.article img {
+    width: 100%;
+    max-height: 450px;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+
+    margin: 20px 0 25px;
+
+    box-shadow:
+        0 8px 25px rgba(70,30,100,0.12);
+}
+
+
+/* =====================================
+   SECOND IMAGE
+===================================== */
+
+.article .second-photo {
+    margin-top: 30px;
+}
+
+
+/* =====================================
+   BACK BUTTON
+===================================== */
+
+.back-btn {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding: 12px 23px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #06b6d4,
+            #0d9488
+        );
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(13,148,136,0.25);
+}
+
+
+/* =====================================
+   ABOUT
+===================================== */
+
+.about {
+    text-align: center;
+
+    color: white;
+
+    padding: 80px 8%;
+
+    margin-top: 80px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4b1d75,
+            #7b2cbf,
+            #c026d3,
+            #db2777
+        );
+}
+
+.about h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.about p {
+    max-width: 750px;
+    margin: auto;
+    color: #f7eaff;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+    background: #24102f;
+    color: #d9cde0;
+    text-align: center;
+    padding: 28px;
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media(max-width:850px) {
+
+    .blog-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:600px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav ul {
+        gap: 8px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+        padding: 6px 9px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .hero {
+        padding: 80px 6%;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .article {
+        width: 92%;
+        padding: 28px;
+    }
+
+    .article h1 {
+        font-size: 31px;
+    }
+
+    .article p {
+        font-size: 16px;
+    }
+
+    .section-title h2 {
+        font-size: 29px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     NAVIGATION
+===================================== -->
+
+<nav>
+
+    <div class="logo">
+        Blogs by Sanskriti
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#blogs">Blogs</a>
+        </li>
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="hero" id="home">
+
+    <h1>
+        Ideas Worth Reading ✨
+    </h1>
+
+    <p>
+        Welcome to Blogs by Sanskriti — a colorful space where
+        ideas, stories and experiences come together. Explore
+        technology, productivity, travel, work, lifestyle and
+        the fascinating digital world.
+    </p>
+
+</section>
+
+
+<!-- =====================================
+     SEARCH
+===================================== -->
+
+<div class="search-container">
+
+    <input
+        type="text"
+        id="searchBox"
+        placeholder="🔍 Search blogs..."
+        onkeyup="searchBlogs()"
+    >
+
+</div>
+
+
+<!-- =====================================
+     BLOG SECTION
+===================================== -->
+
+<section class="container" id="blogs">
+
+    <div class="section-title">
+
+        <h2>
+            Latest Articles
+        </h2>
+
+        <p>
+            Discover stories, ideas and perspectives from Sanskriti.
+        </p>
+
+    </div>
+
+
+    <div class="blog-grid">
+
+
+        <!-- BLOG 1 -->
+
+        <div class="blog-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                alt="Technology">
+
+            <div class="card-content">
+
+                <span class="category">
+                    Technology
+                </span>
+
+                <h3>
+                    The Future of Technology
+                </h3>
+
+                <p>
+                    Discover how artificial intelligence, smart devices,
+                    cloud computing and connected systems are changing
+                    the way we live and work.
+                </p>
+
+                <a
+                    class="read-btn"
+                    onclick="openArticle('article1')">
+                    Read Article →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- BLOG 2 -->
+
+        <div class="blog-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=900&q=80"
+                alt="Productivity">
+
+            <div class="card-content">
+
+                <span class="category">
+                    Productivity
+                </span>
+
+                <h3>
+                    How to Build Better Habits
+                </h3>
+
+                <p>
+                    Learn why small actions, consistency and realistic
+                    goals can make it easier to create routines that
+                    actually last.
+                </p>
+
+                <a
+                    class="read-btn"
+                    onclick="openArticle('article2')">
+                    Read Article →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- BLOG 3 -->
+
+        <div class="blog-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                alt="Travel">
+
+            <div class="card-content">
+
+                <span class="category">
+                    Travel
+                </span>
+
+                <h3>
+                    Why Travel Changes Us
+                </h3>
+
+                <p>
+                    Travel can introduce us to new cultures, unfamiliar
+                    places and experiences that can change the way we
+                    see the world.
+                </p>
+
+                <a
+                    class="read-btn"
+                    onclick="openArticle('article3')">
+                    Read Article →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- BLOG 4 -->
+
+        <div class="blog-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
+                alt="Workspace">
+
+            <div class="card-content">
+
+                <span class="category">
+                    Work
+                </span>
+
+                <h3>
+                    Creating a Better Workspace
+                </h3>
+
+                <p>
+                    A thoughtful workspace can make everyday tasks more
+                    comfortable and can help create an environment that
+                    supports concentration.
+                </p>
+
+                <a
+                    class="read-btn"
+                    onclick="openArticle('article4')">
+                    Read Article →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- BLOG 5 -->
+
+        <div class="blog-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=900&q=80"
+                alt="Lifestyle">
+
+            <div class="card-content">
+
+                <span class="category">
+                    Lifestyle
+                </span>
+
+                <h3>
+                    The Importance of Slowing Down
+                </h3>
+
+                <p>
+                    In a world filled with notifications and constant
+                    activity, creating space to pause can make everyday
+                    moments more meaningful.
+                </p>
+
+                <a
+                    class="read-btn"
+                    onclick="openArticle('article5')">
+                    Read Article →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- BLOG 6 -->
+
+        <div class="blog-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
+                alt="Digital World">
+
+            <div class="card-content">
+
+                <span class="category">
+                    Science
+                </span>
+
+                <h3>
+                    Understanding Our Digital World
+                </h3>
+
+                <p>
+                    Explore the technology behind the internet and learn
+                    why digital awareness is becoming increasingly
+                    important.
+                </p>
+
+                <a
+                    class="read-btn"
+                    onclick="openArticle('article6')">
+                    Read Article →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     ARTICLE 1
+===================================== -->
+
+<section class="article" id="article1">
+
+    <h1>
+        The Future of Technology
+    </h1>
+
+    <div class="article-info">
+        Technology • 8 min read
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+        alt="Technology and computer">
+
+
+    <p>
+        Technology has been one of the most powerful forces shaping
+        human civilization. From simple mechanical inventions to
+        computers and global communication networks, every generation
+        has developed new tools that change the way people interact
+        with the world.
+    </p>
+
+    <p>
+        Today, technological development is happening at an incredible
+        pace. Smartphones allow us to communicate instantly, cloud
+        services let us access information from almost anywhere, and
+        digital platforms have changed the way businesses, schools and
+        communities operate.
+    </p>
+
+    <h2>
+        Artificial Intelligence
+    </h2>
+
+    <p>
+        Artificial intelligence has become an important part of the
+        modern technology landscape. AI systems can recognize patterns,
+        process large amounts of information, understand language and
+        help people perform a wide range of tasks.
+    </p>
+
+    <p>
+        AI is also changing creative and professional work. Designers,
+        programmers, researchers, writers and businesses can use
+        intelligent tools to explore ideas and automate repetitive
+        activities.
+    </p>
+
+    <img
+        class="second-photo"
+        src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=80"
+        alt="Artificial intelligence and technology">
+
+
+    <h2>
+        A More Connected World
+    </h2>
+
+    <p>
+        Another major development is the growth of connected devices.
+        Smart watches, home assistants, vehicles and other devices can
+        communicate with digital systems and exchange information.
+    </p>
+
+    <p>
+        This connectivity can make everyday activities more convenient,
+        but it also creates new questions about privacy, security and
+        responsible use of information.
+    </p>
+
+    <p>
+        The future of technology will therefore not depend only on
+        faster computers or smarter software. It will also depend on
+        how thoughtfully people design, use and manage these tools.
+    </p>
+
+    <h2>
+        Technology and Everyday Life
+    </h2>
+
+    <p>
+        Technology has become part of ordinary routines. People use
+        digital maps to navigate cities, online services to learn new
+        skills, video calls to communicate with family and digital
+        payments to complete everyday purchases.
+    </p>
+
+    <p>
+        As technology continues to develop, learning how these systems
+        work and using them responsibly will become increasingly useful.
+    </p>
+
+    <a
+        class="back-btn"
+        onclick="closeArticles()">
+        ← Back to Blogs
+    </a>
+
+</section>
+
+
+<!-- =====================================
+     ARTICLE 2
+===================================== -->
+
+<section class="article" id="article2">
+
+    <h1>
+        How to Build Better Habits
+    </h1>
+
+    <div class="article-info">
+        Productivity • 7 min read
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80"
+        alt="Productivity desk">
+
+
+    <p>
+        Building a new habit can feel difficult, especially when we
+        expect dramatic changes immediately. Many people create very
+        ambitious goals and then become discouraged when maintaining
+        those goals becomes difficult.
+    </p>
+
+    <p>
+        A more practical approach is to begin with small actions.
+        Instead of trying to completely redesign your daily routine,
+        choose one behavior that can realistically become part of your
+        everyday life.
+    </p>
+
+    <h2>
+        Start Small
+    </h2>
+
+    <p>
+        Small habits are easier to repeat because they usually require
+        less time and energy. Reading a few pages, taking a short walk
+        or spending ten minutes organizing your work can be a useful
+        starting point.
+    </p>
+
+    <p>
+        Once a behavior becomes familiar, it can gradually become
+        easier to increase the amount of time or effort involved.
+    </p>
+
+    <img
+        class="second-photo"
+        src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80"
+        alt="Planning and organization">
+
+
+    <h2>
+        Make It Easy to Remember
+    </h2>
+
+    <p>
+        Creating a specific time and place for an activity can make
+        the habit easier to remember. For example, someone who wants
+        to read regularly might choose to read for fifteen minutes
+        immediately before going to bed.
+    </p>
+
+    <p>
+        Connecting a new habit to something that already happens every
+        day can also make the routine feel more natural.
+    </p>
+
+    <h2>
+        Consistency Over Perfection
+    </h2>
+
+    <p>
+        Nobody follows a routine perfectly every day. Missing one day
+        does not mean that the entire effort has failed. What matters
+        is returning to the routine instead of abandoning it.
+    </p>
+
+    <p>
+        Over time, repeated small actions can become automatic parts
+        of everyday life. The goal is not perfection but progress.
+    </p>
+
+    <h2>
+        Track Your Progress
+    </h2>
+
+    <p>
+        Writing down progress can provide a simple way to understand
+        how consistently a habit is being practiced. A calendar,
+        notebook or digital tracker can help make progress visible.
+    </p>
+
+    <p>
+        Building better habits is ultimately a process of patience,
+        repetition and gradual improvement.
+    </p>
+
+    <a
+        class="back-btn"
+        onclick="closeArticles()">
+        ← Back to Blogs
+    </a>
+
+</section>
+
+
+<!-- =====================================
+     ARTICLE 3
+===================================== -->
+
+<section class="article" id="article3">
+
+    <h1>
+        Why Travel Changes Us
+    </h1>
+
+    <div class="article-info">
+        Travel • 6 min read
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+        alt="Travel landscape">
+
+
+    <p>
+        Travel is more than simply moving from one place to another.
+        It gives people opportunities to experience unfamiliar
+        environments, meet different people and discover new ways of
+        seeing everyday life.
+    </p>
+
+    <p>
+        Even a short trip can interrupt familiar routines. Suddenly,
+        ordinary activities such as ordering food, reading signs or
+        finding transportation can become small adventures.
+    </p>
+
+    <h2>
+        Learning From Different Cultures
+    </h2>
+
+    <p>
+        Every destination has its own traditions, food, language,
+        architecture and history. Spending time in another culture
+        can encourage us to understand that there are many different
+        ways to approach ordinary parts of life.
+    </p>
+
+    <img
+        class="second-photo"
+        src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80"
+        alt="Beautiful travel destination">
+
+
+    <h2>
+        Stepping Outside Your Comfort Zone
+    </h2>
+
+    <p>
+        Traveling often requires flexibility. Flights may change,
+        weather can be unpredictable and unfamiliar places can require
+        us to make decisions quickly.
+    </p>
+
+    <p>
+        These experiences can teach useful lessons about preparation,
+        patience and adapting to situations that are different from
+        what we expected.
+    </p>
+
+    <h2>
+        Memories Over Possessions
+    </h2>
+
+    <p>
+        A trip can create memories that remain meaningful for years.
+        A conversation with a stranger, a beautiful sunset, a local
+        meal or an unexpected discovery can become more memorable than
+        anything purchased during the journey.
+    </p>
+
+    <h2>
+        Seeing Familiar Things Differently
+    </h2>
+
+    <p>
+        Returning home after traveling can sometimes make familiar
+        surroundings feel different. Experiencing another way of life
+        can encourage us to appreciate aspects of our own routines
+        that we previously overlooked.
+    </p>
+
+    <p>
+        In this way, travel can become not only a journey across
+        geography, but also an opportunity to learn and reflect.
+    </p>
+
+    <a
+        class="back-btn"
+        onclick="closeArticles()">
+        ← Back to Blogs
+    </a>
+
+</section>
+
+
+<!-- =====================================
+     ARTICLE 4
+===================================== -->
+
+<section class="article" id="article4">
+
+    <h1>
+        Creating a Better Workspace
+    </h1>
+
+    <div class="article-info">
+        Work • 5 min read
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80"
+        alt="Modern workspace">
+
+
+    <p>
+        The environment where we work can influence how comfortable
+        and focused we feel throughout the day. A productive workspace
+        does not have to be expensive or extremely sophisticated.
+    </p>
+
+    <p>
+        Even small changes such as improving lighting, organizing
+        cables and keeping frequently used items within reach can
+        make a workspace easier to use.
+    </p>
+
+    <h2>
+        Keep the Desk Organized
+    </h2>
+
+    <p>
+        A cluttered desk can make it difficult to find important
+        objects and can create unnecessary distractions. Keeping only
+        the items needed for the current task nearby can create a
+        cleaner visual environment.
+    </p>
+
+    <img
+        class="second-photo"
+        src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1200&q=80"
+        alt="Creative office">
+
+
+    <h2>
+        Choose Comfortable Lighting
+    </h2>
+
+    <p>
+        Lighting is an important part of a comfortable workspace.
+        Natural light can make a room feel open and bright, while a
+        suitable desk lamp can help when working during darker hours.
+    </p>
+
+    <h2>
+        Reduce Digital Distractions
+    </h2>
+
+    <p>
+        Notifications can interrupt concentration throughout the day.
+        Turning off unnecessary alerts and keeping distracting
+        applications closed can make it easier to focus on a single
+        task.
+    </p>
+
+    <h2>
+        Add Personality
+    </h2>
+
+    <p>
+        A workspace should not feel completely empty. Plants,
+        photographs, artwork, books or other meaningful objects can
+        make the environment feel more personal.
+    </p>
+
+    <p>
+        The goal is not to create a perfect office. The goal is to
+        create a place where you feel comfortable, organized and ready
+        to work.
+    </p>
+
+    <a
+        class="back-btn"
+        onclick="closeArticles()">
+        ← Back to Blogs
+    </a>
+
+</section>
+
+
+<!-- =====================================
+     ARTICLE 5
+===================================== -->
+
+<section class="article" id="article5">
+
+    <h1>
+        The Importance of Slowing Down
+    </h1>
+
+    <div class="article-info">
+        Lifestyle • 6 min read
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=1200&q=80"
+        alt="Relaxing lifestyle">
+
+
+    <p>
+        Modern life can feel extremely fast. Work, education,
+        technology, social media and everyday responsibilities can
+        fill our schedules with constant activity.
+    </p>
+
+    <p>
+        Slowing down does not necessarily mean doing nothing. It can
+        simply mean creating moments where we stop rushing from one
+        activity to the next.
+    </p>
+
+    <h2>
+        Being Present
+    </h2>
+
+    <p>
+        When our attention is constantly focused on the next task,
+        we may overlook what is happening in the present moment.
+        Simple experiences such as drinking coffee, walking outside,
+        reading a book or talking with someone can become more
+        meaningful when we give them our attention.
+    </p>
+
+    <img
+        class="second-photo"
+        src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80"
+        alt="Peaceful nature">
+
+
+    <h2>
+        Taking Breaks
+    </h2>
+
+    <p>
+        Short breaks can create space between demanding activities.
+        Instead of moving immediately from one screen or task to
+        another, taking a few minutes to walk, stretch or simply sit
+        quietly can provide a change of pace.
+    </p>
+
+    <h2>
+        Spending Time Without Screens
+    </h2>
+
+    <p>
+        Digital devices are useful, but constant notifications can
+        make it difficult to disconnect. Creating periods without
+        unnecessary notifications can give your attention a chance
+        to settle.
+    </p>
+
+    <h2>
+        Enjoying Ordinary Moments
+    </h2>
+
+    <p>
+        A meaningful lifestyle does not always require extraordinary
+        experiences. A favorite song, a home-cooked meal, a walk at
+        sunset or a conversation with a friend can become valuable
+        parts of everyday life.
+    </p>
+
+    <p>
+        Slowing down is ultimately about making room for attention,
+        rest and appreciation in the middle of a busy routine.
+    </p>
+
+    <a
+        class="back-btn"
+        onclick="closeArticles()">
+        ← Back to Blogs
+    </a>
+
+</section>
+
+
+<!-- =====================================
+     ARTICLE 6
+===================================== -->
+
+<section class="article" id="article6">
+
+    <h1>
+        Understanding Our Digital World
+    </h1>
+
+    <div class="article-info">
+        Science & Technology • 7 min read
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+        alt="Digital world">
+
+
+    <p>
+        The internet has become one of the most important technologies
+        in modern society. It allows people and computers to exchange
+        information across enormous distances in a very short amount
+        of time.
+    </p>
+
+    <p>
+        When we open a website, send a message or stream a video,
+        many different systems work together behind the scenes.
+        Data travels through networks that include computers, servers,
+        cables, wireless connections and data centers.
+    </p>
+
+    <h2>
+        How Information Travels
+    </h2>
+
+    <p>
+        Information on the internet is broken into smaller pieces of
+        data that can travel through different network routes. When
+        those pieces reach their destination, systems can reconstruct
+        the information so that users can see a webpage, image or
+        video.
+    </p>
+
+    <img
+        class="second-photo"
+        src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+        alt="Computer technology">
+
+
+    <h2>
+        Information Everywhere
+    </h2>
+
+    <p>
+        Search engines, digital libraries, educational platforms and
+        online communities have made information easier to access.
+        Someone with an internet connection can explore subjects that
+        were once difficult to study without access to physical
+        libraries or specialized resources.
+    </p>
+
+    <h2>
+        The Importance of Digital Awareness
+    </h2>
+
+    <p>
+        Having access to information also means learning how to
+        evaluate it. Not every webpage, post or video contains
+        accurate information. Checking sources, looking for supporting
+        evidence and comparing information can help people make better
+        decisions about what they read online.
+    </p>
+
+    <h2>
+        Protecting Personal Information
+    </h2>
+
+    <p>
+        Digital awareness also includes understanding privacy and
+        security. Strong passwords, careful sharing of personal
+        information and awareness of suspicious messages are useful
+        parts of responsible internet use.
+    </p>
+
+    <p>
+        The digital world will continue to grow. Understanding the
+        basic ideas behind it can help people use technology more
+        confidently and responsibly.
+    </p>
+
+    <a
+        class="back-btn"
+        onclick="closeArticles()">
+        ← Back to Blogs
+    </a>
+
+</section>
+
+
+<!-- =====================================
+     ABOUT
+===================================== -->
+
+<section class="about" id="about">
+
+    <h2>
+        About Blogs by Sanskriti
+    </h2>
+
+    <p>
+        Blogs by Sanskriti is a colorful personal blog created for
+        readers who enjoy technology, productivity, travel, lifestyle,
+        work and interesting ideas. The goal is to make every article
+        simple, useful and enjoyable to read.
+    </p>
+
+</section>
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+    <p>
+        © 2026 Blogs by Sanskriti. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+function openArticle(articleId) {
+
+    document.getElementById("blogs").style.display = "none";
+
+    document.querySelector(".hero").style.display = "none";
+
+    document.querySelector(".search-container").style.display = "none";
+
+    document.querySelector(".about").style.display = "none";
+
+    document.querySelectorAll(".article").forEach(function(article) {
+
+        article.classList.remove("active");
+
+    });
+
+    document.getElementById(articleId).classList.add("active");
+
+    window.scrollTo(0, 0);
+}
+
+
+function closeArticles() {
+
+    document.querySelectorAll(".article").forEach(function(article) {
+
+        article.classList.remove("active");
+
+    });
+
+    document.getElementById("blogs").style.display = "block";
+
+    document.querySelector(".hero").style.display = "block";
+
+    document.querySelector(".search-container").style.display = "block";
+
+    document.querySelector(".about").style.display = "block";
+
+    window.scrollTo(0, 0);
+}
+
+
+function searchBlogs() {
+
+    let input =
+        document
+        .getElementById("searchBox")
+        .value
+        .toLowerCase();
+
+    let cards =
+        document.querySelectorAll(".blog-card");
+
+    cards.forEach(function(card) {
+
+        let text =
+            card.innerText.toLowerCase();
+
+        if(text.includes(input)) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+}
+
+</script>
+
+</body>
+</html>
